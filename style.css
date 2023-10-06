@@ -5,3 +5,7 @@ table, th, td {
 .AlterGuess {
     display: flex;
 } 
+
+.BottomButtons {
+    display: flex;
+}
