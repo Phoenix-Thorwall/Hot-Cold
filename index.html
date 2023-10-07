@@ -7,61 +7,64 @@
     <script src = "scripting.js" async></script>
     <title>Hot&Cold</title>
 </head>
-<body>
+<body onload = "initialize();">
     <h1>HOT & COLD GAME</h1>
 
-    <table>
+    
+    
+    <table id = "history">
             <tr>
                 <th>Guesses</th>
                 <th>Hot or Cold?</th>
             </tr>
     </table>
 
-    <p>Current Guess = </p>
-    <p>Number of Guesses = </p>
+    <div id = "numGuess"></div>
+    <div id = "guess"></div>
+    
 
     <div class = "AlterGuess">
         <table>
             <tr class = "1">
-                <th><button class = "subtract">-</button></th>
+                <th><button onclick = "subtractNum(`1`);">-</button></th>
                 <th>1</th>
-                <th><button class = "add">+</button></th>
+                <th><button onclick = "addNum(`1`);">+</button></th>
             </tr>
         </table>
 
         <table>
             <tr class = "5">
-                <th><button class = "subtract">-</button></th>
+                <th><button onclick = "subtractNum(`5`);">-</button></th>
                 <th>5</th>
-                <th><button class = "add">+</button></th>
+                <th><button onclick = "addNum(`5`);">+</button></th>
             </tr>
         </table>
 
         <table>
             <tr class = "10">
-                <th><button class = "subtract">-</button></th>
+                <th><button onclick = "subtractNum(`10`);">-</button></th>
                 <th>10</th>
-                <th><button class = "add">+</button></th>
+                <th><button onclick = "addNum(`10`);">+</button></th>
             </tr>
         </table>
 
         <table>
             <tr class = "25">
-                <th><button class = "subtract">-</button></th>
+                <th><button onclick = "subtractNum(`25`);">-</button></th>
                 <th>25</th>
-                <th><button class = "add">+</button></th>
+                <th><button onclick = "addNum(`25`);">+</button></th>
             </tr>
         </table>
     </div>
 
     <div class = "BottomButtons">
         <p>
-        <button>commit</button>
-        <button>reset</button>
+        <button onclick = "submitGuess();">commit</button>
+        <button onclick = "newRound();">reset</button>
         </p>
     </div>
     
-
+    <div id = "victory"></div>
 
 
 </body>
