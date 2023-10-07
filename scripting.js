@@ -2,6 +2,7 @@ function initialize() {
     outputGuess = document.getElementById("guess");
     outputNumGuess = document.getElementById("numGuess");
     outputVictory = document.getElementById("victory");
+    outputAnswer = document.getElementById("revealAnswer");
     newRound();
     display();
 }
@@ -11,6 +12,10 @@ function newRound() {
     guess = 50;
     numGuess = 5;
     display();
+    clearTable("history");
+    outputVictory.innerHTML = "";
+    outpurAnswer.innerHTML = "";
+    
 }
 
 function display() {
@@ -36,17 +41,21 @@ function subtractNum(n){
 
 function submitGuess(){
     if (guess != answer){
-        numGuess--;
-        display();
-        addRow("history");
-    } else{
-        outputVictory.innerHTML = "YOU GUESSED CORRECTLY YAYYYYYY";
-    }
+            numGuess--;
+            display();
+            addRow("history");
+            if (numGuess == 0){
+                outputVictory.innerHTML = "You ran out of guesses :(";
+                outputAnswer.innerHTML = "The hidden number was " + answer;
+            }
+        } else{
+                outputVictory.innerHTML = "YOU GUESSED CORRECTLY YAYYYYYY";
+                outputAnswer.innerHTML = "The hidden number was " + answer;
+            }
 }
 
 function addRow(tableID){
     let tableRef = document.getElementById(tableID);
-
     let newRow = tableRef.insertRow(-1);
     let guessCell = newRow.insertCell(0);
     let hintCell = newRow.insertCell(1);
@@ -71,5 +80,12 @@ function addRow(tableID){
         hintCell.innerHTML = "Cold";
     } else if (range >= 55){
         hintCell.innerHTML = "Very Cold";
+    }
+}
+
+function clearTable(tableID){
+    let tableRef = document.getElementById(tableID);
+    for (let i = tableRef.ariaRowSpan.length; i > 0; i--){
+        tableRef.deleteRow(i);
     }
 }
