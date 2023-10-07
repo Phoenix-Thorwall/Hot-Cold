@@ -14,7 +14,7 @@ function newRound() {
     display();
     clearTable("history");
     outputVictory.innerHTML = "";
-    outpurAnswer.innerHTML = "";
+    outputAnswer.innerHTML = "";
     
 }
 
@@ -85,7 +85,7 @@ function addRow(tableID){
 
 function clearTable(tableID){
     let tableRef = document.getElementById(tableID);
-    for (let i = tableRef.ariaRowSpan.length; i > 0; i--){
-        tableRef.deleteRow(i);
+    while (tableRef.rows.length > 1){
+        tableRef.deleteRow(1);
     }
 }
